@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.github.tlaabs.timetableviewdemo"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 33
         versionCode 4
         versionName "1.0.3-fx1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
