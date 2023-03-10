@@ -2,15 +2,14 @@ package com.github.tlaabs.timetableview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
@@ -330,7 +329,9 @@ public class TimetableView extends LinearLayout {
     }
 
     private int calCellWidth(){
-        Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
+        Display display = null; if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            display = ((ContextWrapper) context).getBaseContext().getDisplay();
+        }
         Point size = new Point();
         display.getSize(size);
         int cell_w = (size.x-getPaddingLeft() - getPaddingRight()- sideCellWidth) / (columnCount - 1);
